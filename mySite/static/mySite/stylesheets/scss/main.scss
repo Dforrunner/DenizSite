@@ -1,0 +1,207 @@
+@import "home";
+@import "about";
+@import "contact";
+@import "menu";
+@import "global_usage";
+@import "navbar";
+@import "animations";
+@import 'modules/variables';
+@import "modules/mixins";
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+nav{
+    z-index: 2;
+}
+
+p:hover, p:visited, p:active, a:hover, a:visited, a:link, a:active, li {
+    text-decoration: none !important;
+    outline: 0;
+}
+input::-moz-focus-inner {
+  border: 0;
+}
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* Main Font Families used */
+.primary-font{
+  font-family: $primary-font;
+}
+
+.secondary-font{
+  font-family: $secondary-font;
+}
+
+.secondary-font-tan{
+  font-family: $secondary-font;
+  color: $tan;
+}
+
+.cursive-font{
+  font-family: $cursive-font;
+  color: $tan;
+}
+
+.cursive-font-gold{
+  font-family: $cursive-font;
+  color: $gold;
+}
+
+// Custom hr style 1
+.hr-double-left {
+  padding-left: 25px;
+  @include custom_hr;
+}
+
+.hr-double-right {
+  padding-right: 25px;
+  @include custom_hr;
+}
+
+.hr-double-right:after, .hr-double-left:after {
+	@include custom_hr_after;
+}
+
+.hr-double-left-tan {
+  padding-left: 25px;
+  @include custom_hr_tan;
+}
+
+.hr-double-right-tan {
+  padding-right: 25px;
+  @include custom_hr_tan;
+}
+
+.hr-double-right-tan:after, .hr-double-left-tan:after {
+	@include custom_hr_after_tan;
+}
+// Custom hr style 2
+hr.style2 {
+    padding: 0;
+    border: none;
+    border-top: medium double #FCDA9A;
+    color: #FCDA9A;
+    text-align: center;
+}
+
+hr.style2:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0 0.2em;
+    background: white;
+    -webkit-transform: rotate(90deg);
+	  -moz-transform: rotate(90deg);
+	  transform: rotate(90deg);
+}
+
+// Custom hr style 3
+hr.style3 {
+    width: 150px;
+    padding: 0;
+    border: none;
+    border-top: medium double $tan-dark;
+    color: $tan-dark;
+    text-align: center;
+}
+
+hr.style3:after {
+    content: "\2699";
+    display: inline-block;
+    position: relative;
+    top: -1em;
+    font-size: 1.5em;
+    padding:5px ;
+    background: white;
+}
+
+// Custom hr style 4
+hr.style4 {
+    width: 100px;
+    padding: 0;
+    border: none;
+    border-top: 1px solid $tan-dark;
+    color: $tan-dark;
+    text-align: center;
+}
+
+hr.style4:after {
+    content: '\25CF';
+    display: inline-block;
+    position: relative;
+    top: -1.1em;
+    font-size: 1em;
+    padding:5px ;
+    background: white;
+}
+
+/*background colors*/
+.gray-bg-color{
+  background-color: #585858;
+}
+
+/*Border*/
+.box-w-border{
+  border: 15px solid black;
+  border-radius: 10px;
+}
+
+/*Font Color*/
+.font-color-back{
+  color: black;
+}
+
+// Background image
+.fluid-background{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+//Custom Hr styles
+hr.style-one {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+// Text Shadows
+.text-black-shadow{
+  text-shadow: 0 0 5px black,
+               0 0 10px black,
+               0 0 18px black,
+               0 1px 5px black,
+               0 2px 10px black,
+               0 8px 18px black,
+               1px 0 5px black,
+               2px 0 10px black,
+               8px 0 18px black;
+
+
+}
+
+// Footer 2 Icon Buttons
+.icon-btn {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  box-shadow: 0 0 20px #848484;
+  margin-bottom: 5px;
+  font-size: 20px;
+}

@@ -1,0 +1,47 @@
+{% load static custom_tags i18n%}
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg fixed-top scrolling-navbar shadow-none " id="NavBar">
+    <div class="container">
+        <!-- Navbar LOGO -->
+        <a class="navbar-brand animated slideInLeft " href="{% url 'home' %}">
+            <img alt='logo' style="width: 100px" src="{% logo %}" id="logo">
+        </a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler btn-outline-white" type="button" data-toggle="collapse" data-target="#NavBtns"
+        aria-controls="NavBtns" aria-expanded="false" aria-label="Toggle navigation" id="MenuBtn">
+        <i class="fas fa-bars"></i></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="NavBtns">
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light animated fadeInDown home-url" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light animated fadeInDown delay-100ms" href="{% url 'menu' %}">{% trans 'Menu' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light animated fadeInDown delay-200ms" href="{% url 'about' %}">{% trans 'About' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light animated fadeInDown delay-300ms" href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-white animated fadeInDown" href="{{ request|switch_i18n:'en' }}">
+                        EN/<img alt='USA Flag Icon' class="i18n_flag img-fluid" src="{% static 'mySite/local_imgs/flag_icons/united-states.png' %}"/>
+                    </a>
+                 </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-white animated fadeInDown" href="{{ request|switch_i18n:'tr' }}">
+                        TR/<img alt='TR Flag Icon' class="i18n_flag img-fluid" src="{% static 'mySite/local_imgs/flag_icons/turkey.png' %}"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+      <!-- Collapsible content -->
+    </div>
+
+</nav>
+<!--/.Navbar-->

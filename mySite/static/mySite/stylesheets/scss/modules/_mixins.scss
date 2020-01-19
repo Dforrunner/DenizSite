@@ -1,0 +1,93 @@
+@import "variables";
+
+// Bootstrap imports
+@import "../../../../mySite/MDB/scss/core/bootstrap/functions";
+@import "../../../../mySite/MDB/scss/core/bootstrap/variables";
+@import "../../../../mySite/MDB/scss/core/mixins";
+
+// Media Queries
+@mixin smart-phones {
+  // Smart-phones (portrait and landscape)
+  @media only screen and (max-device-width: 767px) and (orientation: portrait){
+    @content
+  }
+}
+
+@mixin tablet {
+  // tablets (portrait and landscape)
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1023px){
+    @content
+  }
+}
+
+@mixin desktop {
+  // desktops
+  @media only screen and (min-device-width: 1024px){
+    @content
+  }
+}
+
+@mixin retina {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
+  only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
+  only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
+  only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
+  only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
+  only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) {
+
+    @content
+
+  }
+}
+// Other
+@mixin flex-center{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+// Custom Hr mixin
+@mixin custom_hr{
+  display: block;
+  border-style: inset;
+  border-top: 0;
+  border-bottom: 1px solid $gold;
+  border-left: 0;
+  border-right: 0;
+  height: 6px;
+  width:150px;
+}
+
+@mixin custom_hr_after{
+  content: '';
+  display: block;
+  border-top: 1px solid $gold;
+  border-bottom: 0;
+}
+
+@mixin custom_hr_tan{
+  display: block;
+  border-style: inset;
+  border-top: 0;
+  border-bottom: 1px solid $tan-dark;
+  border-left: 0;
+  border-right: 0;
+  height: 6px;
+  width:150px;
+}
+@mixin custom_hr_after_tan{
+  content: '';
+  display: block;
+  border-top: 1px solid $tan-dark;
+  border-bottom: 0;
+}
+
+// Transform element
+@mixin transform_element($rotate){
+  display: inline-block;
+  -webkit-transform: rotate($rotate) !important;
+  -moz-transform: rotate($rotate) !important;
+  -o-transform: rotate($rotate) !important;
+  transform: rotate($rotate) !important;
+}

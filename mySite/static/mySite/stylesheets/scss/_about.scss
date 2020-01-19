@@ -1,0 +1,35 @@
+@import "modules/variables";
+@import "modules/mixins";
+
+.about-section-title{
+  font-size: 35px;
+  @include media-breakpoint-between(md, lg){
+    font-size: 30px;
+  }
+  @include media-breakpoint-between(sm, md){
+    font-size: 25px;
+  }
+  @include media-breakpoint-between(xs, sm){
+    font-size: 35px;
+  }
+  @include media-breakpoint-down(xs){
+    font-size: 30px;
+  }
+}
+
+.about-section-subtitle{
+  font-size: 40px;
+  margin-top: -25px;
+  @include media-breakpoint-between(md, lg){
+    font-size: 30px;
+  }
+  @include media-breakpoint-between(sm, md){
+    font-size: 25px;
+  }
+  @include media-breakpoint-between(xs, sm){
+    font-size: 35px;
+  }
+  @include media-breakpoint-down(xs){
+    font-size: 23px;
+  }
+}

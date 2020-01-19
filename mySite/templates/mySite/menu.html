@@ -1,0 +1,84 @@
+{% extends 'mySite/base.html' %}
+{% load custom_tags i18n%}
+{% block title %}{% trans 'Menu' %}{% endblock %}
+
+{% block body %}
+
+<main class="menuPage">
+    <!-- Menu Section 1 -->
+    <section>
+        <div class="view">
+            <div  class="row align-items-center sec-lg-img " style="background-image: url('{{ page.sec1_img.url }}');"></div>
+            <div class="mask flex-center rgba-black-light">
+                 <!-- Content -->
+                <div class="col-12 text-center text-black-shadow sec3-content">
+                    <h1 class="cursive-font sec3-msg-line1 sec3-text">{{ page.sec1_l1 }}</h1>
+                    <h1 class="subtext-header white-text secondary-font sec3-msg-line2 sec3-text">{{ page.sec1_l2 }}</h1>
+                    <!-- Custom divider -->
+                    <div class="sec3-divider">
+                        {% include 'mySite/reused_code/custome-divider1.html' %}
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </section>
+    <!-- Menu Section 1 -->
+    <!-- Menu Section 2 -->
+    <section>
+        <div class="container mt-4 mb-5 p-3">
+            <div class="row justify-content-center">
+
+                {% for c in categories %}
+                    <div class="row">
+                        <div class="col-12 text-center  mt-5 mb-4">
+                            <p class="cursive-font lh-02 h3">{{ c.phrase_above_name }}</p>
+                            <p class="secondary-font h1" >{{ c.category_name }}</p>
+                            <hr class="style4">
+                        </div>
+                        <div class="col-12">
+                            {% for m in c.menu_items.all %}
+                                <div class="menu-list-pg">
+                                    <!-- Grid Row -->
+                                    <div class="row">
+                                        <!-- Grid Column 1 -->
+                                        <div class="col-lg-3 col-md-2 col-sm-2 col-4">
+                                            <img src="{{ m.image.url }}" class="rounded-circle img-fluid" alt = 'menu image'>
+                                        </div>
+                                        <!-- Grid Column 1 -->
+                                        <!-- Grid Column 2 -->
+                                        <div class="col-lg-6 col-md-8 col-sm-8 col-5">
+                                            <!-- Content -->
+                                            <div class="row menu-title">{{m.food_name}}</div>
+                                            <div class="row menu-description">
+                                                <!-- Getting list of Ingredients -->
+                                                {% for i in m.ingredients.all %}
+                                                    {{i.ingredient_name}}
+                                                    {% if not forloop.last %}
+                                                        ,
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                            <!-- Content -->
+                                        </div>
+                                        <!-- Grid Column 2 -->
+                                        <!-- Grid Column 3 -->
+                                        <div class="col-lg-3 col-md-2 col-sm-2 col-3">
+                                            <div class="border-bottom border-top border-light text-center">
+                                                <div class="menu-price cursive-font currencyExchange">₺ {{m.cost}}</div>
+                                            </div>
+                                        </div>
+                                        <!-- Grid Column 3 -->
+                                    </div>
+                                    <!-- Grid Row -->
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

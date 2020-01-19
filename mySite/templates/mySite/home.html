@@ -1,0 +1,317 @@
+{% extends 'mySite/base.html' %}
+{% load static i18n %}
+{% block title %}{% trans 'Home' %}{% endblock %}
+
+{% block body %}
+<main class="homePage" id="homePage">
+    <!-- Section 1 -->
+    <section>
+        <!-- Full Page Intro -->
+        <div class="view ">
+            <div class="sec1-content-sizing align-items-center" style="background-image: url('{{ home.header.url }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                <div class="row ">
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-5">
+                        <img class="animated slideInLeft" src="{% static 'mySite/local_imgs/home_header/left/meat_doner.png' %}" alt="Meat Doner Image" id="meat-doner">
+                        <img class="img-fluid animated slideInLeft delay-200ms" src="{% static 'mySite/local_imgs/home_header/left/peper_bowl.png' %}" alt="Pepper Bowl" id="pepper_bowl">
+                        <img class="img-fluid animated slideInLeft delay-400ms" src="{% static 'mySite/local_imgs/home_header/left/chopped_vegies1.png' %}" alt="Chopped Veggies" id="chopped-veggies-left">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-2 col-2">
+                        <img class="animated slideInUp" src="{% static 'mySite/local_imgs/home_header/middle/spice_bowls.png' %}" alt="Meat Doner Image" id="thriple-spice-bowls">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-5">
+                        <img class="animated slideInRight" src="{% static 'mySite/local_imgs/home_header/right/chicken_doner.png' %}" alt="Chicken Doner" id="chicken-doner">
+                        <img class="img-fluid animated slideInRight delay-200ms" src="{% static 'mySite/local_imgs/home_header/right/chopped_vegies2.png' %}" alt="Chopped Veggies" id="chopped-veggies-right">
+                        <img class="img-fluid animated slideInRight delay-400ms" src="{% static 'mySite/local_imgs/home_header/right/onion_bowl.png' %}" alt="Onion Bowl" id="onion-bowl">
+                    </div>
+                </div>
+            </div>
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-black-light z-20 ">
+              <!-- Content -->
+                <div class="container">
+                <!--Grid row-->
+                <div class="row align-items-center sec1-content-sizing">
+                    <!--Grid column-->
+                    <div class="col-12 text-center">
+                        <!-- titles-->
+                        <h1 class="cursive-font-gold animated fadeInDown">{{home.header_title_line1}}</h1>
+                        <p class="text-uppercase secondary-font white-text animated fadeInDown  header-text-sizing">{{home.header_title_line2}}</p>
+                        <!-- Custom divider -->
+                        {% include 'mySite/reused_code/custome-divider1.html' %}
+                        <!-- Open Hours -->
+                        <div class="container">
+                            <h6 class="primary-font white-text mt-4">{% trans 'OPEN HOURS' %}</h6>
+                            <div class="header-hours">
+                                {% for hrs in open_hrs %}
+                                    <p>
+                                        <span class="font-weight-bold opacity-70">{{ hrs.get_weekday_from_display }} - {{ hrs.get_weekday_to_display }}: </span>
+                                        <span class="opacity-60">{{hrs.open_hr_from}} - {{ hrs.open_hr_to }}</span>
+                                    </p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+              </div>
+              <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+        <!-- Full Page Intro -->
+    </section>
+    <!-- Section 1 -->
+
+    <!-- Section 2 -->
+    <section id="section2">
+        <!-- Check if background is defined for section 2 because it's optional-->
+        {% if home.section2 %}
+            <div class="row" style="background-image:url('{{ home.section2.url }}')">
+        {% else %}
+            <div class="row">
+        {% endif %}
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-2 col-sm-0 col-0">
+                <!-- Images -->
+                {% if home.section2_image_left %}
+                    <div class="row h-100">
+                        <img class="section2-img-left" alt='Spice bowls' src="{{ home.section2_image_left.url }}">
+                    </div>
+
+                {% endif %}
+                <!-- Images -->
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-8 col-sm-12 col-12 p-lg-5 p-md-5">
+                <!-- Story Content -->
+                <!-- Check if background is defined for section 2 story box because it's optional-->
+                {% if home.section2_story %}
+                    <div class="story-box fluid-background" style="background-image: url('{{ home.section2_story.url }}');">
+                {% else %}
+                    <div class="story-box" style="background-color: white">
+                {% endif %}
+                    <div class="p-4">
+                        <h2 class="cursive-font">{{home.section2_title_line1}}</h2>
+                        <h2 class="secondary-font">{{home.section2_title_line2}}</h2>
+                        <hr class="style-one">
+                        <p>
+                            {{ our_story }}
+                            {% if our_story_2long %}
+                            <a class="font-italic" href="{% url 'about' %}">...{% trans 'read more' %}</a>
+                            {% endif %}
+                        </p>
+                    </div>
+
+                </div>
+                <!-- Story Content -->
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class= "col-lg-3 col-md-2">
+                <!-- Images -->
+                {% if home.section2_image_right %}
+                    <div class="row h-100">
+                        <img class="section2-img-right" alt='Spice bowls' src="{{ home.section2_image_right.url }}">
+                    </div>
+                {% endif %}
+                <!-- Images -->
+            </div>
+            <!--Grid column-->
+        </div>
+    </section>
+    <!-- Section 2 -->
+
+    <!-- Section 3-->
+    <section id="section3">
+        <div class="view">
+            <div  class="row align-items-center sec-lg-img " style="background-image: url('{{ home.section3.url }}');"></div>
+            <div class="mask flex-center rgba-black-light">
+                 <!-- Content -->
+                <div class="col-12 text-center text-black-shadow sec3-content opacity-0">
+                    <h1 class="cursive-font sec3-msg-line1 sec3-text">{{home.section3_msg_line1}}</h1>
+                    <h1 class="subtext-header white-text secondary-font sec3-msg-line2 sec3-text">{{home.section3_msg_line2}}</h1>
+                    <!-- Custom divider -->
+                    <div class="sec3-divider">
+                        {% include 'mySite/reused_code/custome-divider1.html' %}
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </section>
+    <!-- Section 3-->
+
+    <!-- Section 4-->
+    <section>
+        <div class="row p-5 mt-5 mb-5">
+        <!-- Grid Column 1 -->
+        <div class="col-lg-6 col-md-12 col-sm-12 pl-lg-3 pl-md-3 pl-sm-0">
+            <!--Grid Row-->
+            <div class="row p-1">
+                <!-- Grid Column 1 -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                    <!-- Content -->
+                    <div class="view overlay zoom waves-effect">
+                        <img src="{{home.section4_img1.url}}" class="sec1-img-size" alt="Food image">
+                    </div>
+                    <!-- Content -->
+                </div>
+                <!-- Grid Column 1 -->
+                <!-- Grid Column 2 -->
+                <div class=" col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                    <!-- Content -->
+                    <div class="view overlay zoom waves-effect">
+                        <img src="{{home.section4_img2.url}}" class="sec1-img-size" alt="Food image">
+                    </div>
+                    <!-- Content -->
+                </div>
+                <!-- Grid Column 2 -->
+                <!-- Grid Column 3 -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                    <!-- Content -->
+                    <div class="view overlay zoom waves-effect">
+                        <img src="{{home.section4_img3.url}}" class="sec1-img-size" alt="Food image">
+                    </div>
+                    <!-- Content -->
+                </div>
+                <!-- Grid Column 3 -->
+                <!-- Grid Column 4 -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 p-0">
+                    <!-- Content -->
+                    <div class="view overlay zoom waves-effect">
+                        <img src="{{home.section4_img4.url}}" class="sec1-img-size" alt="Food image">
+                    </div>
+                    <!-- Content -->
+                </div>
+                <!-- Grid Column 4 -->
+            </div>
+            <!--Grid Row-->
+        </div>
+        <!-- Grid Column 1-->
+        <!-- Grid Column 2-->
+        <div class="col-lg-6 col-md-12 col-sm-12 p-lg-4 p-md-5">
+            <!-- Column Header -->
+            <p class="menu-header">
+                <span class="cursive-font">{% trans 'From the menu' %}</span><br>
+                <span class="secondary-font">{% trans 'Customer Favorites' %}</span>
+            </p>
+            <!-- Column Header -->
+            <!-- Menu row items -->
+            {% for m in menu %}
+                <!-- Grid Row -->
+                <div class="row pt-4 align-items-center">
+                    <!-- Grid Column 1 -->
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-4">
+                        <img src="{{ m.image.url }}" class="rounded-circle img-fluid" alt = 'menu image'>
+                    </div>
+                    <!-- Grid Column 1 -->
+                    <!-- Grid Column 2 -->
+                    <div class="col-lg-6 col-md-8 col-sm-8 col-5">
+                        <!-- Content -->
+                        <div class="row menu-title">{{m.food_name}}</div>
+                        <div class="row menu-description">
+                            <!-- Getting list of Ingredients -->
+                            {% for i in m.ingredients.all %}
+                                {{i.ingredient_name}}
+                                {% if not forloop.last %}
+                                    ,
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <!-- Content -->
+                    </div>
+                    <!-- Grid Column 2 -->
+                    <!-- Grid Column 3 -->
+                    <div class="col-lg-3 col-md-2 col-sm-2 col-3">
+                        <div class="border-bottom border-top border-light text-center">
+                            <div class="menu-price cursive-font currencyExchange">₺ {{m.cost}}</div>
+                        </div>
+                    </div>
+                    <!-- Grid Column 3 -->
+                </div>
+                <!-- Grid Row -->
+            {% endfor %}
+            <!-- Menu row items -->
+        </div>
+        <!-- Grid Column 2-->
+    </div>
+    </section>
+    <!-- Section 4-->
+
+    <!-- Section 5-->
+    <section id="section5">
+        <div class="view">
+            <div class="row align-items-center sec-lg-img" style="background-image: url('{{ home.section5.url }}');">
+            </div>
+            <div class="mask flex-center rgba-black-light">
+                 <!-- Content -->
+                <div class="col-12 text-center text-black-shadow sec5-content opacity-0">
+                    <h1 class="cursive-font sec5-msg-line1 sec5-text">{{home.section5_msg_line1}}</h1>
+                    <h1 class="subtext-header white-text secondary-font sec5-msg-line2 sec5-text">{{home.section5_msg_line2}}</h1>
+                    <!-- Custom divider -->
+                    <div class="sec5-divider">
+                        {% include 'mySite/reused_code/custome-divider1.html' %}
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </section>
+    <!-- Section 5-->
+
+    <!-- Section 6 -->
+    <section id="section6">
+        <div class="row p-5">
+            <div class="col-lg-4 col-md-4 col-sm-12 p-lg-4 p-md-2 p-sm-5 p-1 section6-col">
+                <div class="view">
+                    <div class="row align-items-center section6-img" style="background-image: url('{{ home.section6_img1.url }}');">
+                    </div>
+                    <div class="mask flex-center rgba-black-light">
+                         <!-- Content -->
+                        <div class="col-12 text-center text-black-shadow">
+                            <h1 class="cursive-font">{{home.section6_img1_text_line1}}</h1>
+                            <h1 class="subtext-header white-text secondary-font ">{{home.section6_img1_text_line2}}</h1>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 p-lg-4 p-md-2 p-sm-5 p-1 section6-col">
+                <div class="view ">
+                    <div class="row align-items-center section6-img" style="background-image: url('{{ home.section6_img2.url }}');">
+                    </div>
+                    <div class="mask flex-center rgba-black-light">
+                         <!-- Content -->
+                        <div class="col-12 text-center text-black-shadow">
+                            <h1 class="cursive-font">{{home.section6_img2_text_line1}}</h1>
+                            <h1 class="subtext-header white-text secondary-font ">{{home.section6_img2_text_line2}}</h1>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 p-lg-4 p-md-2 p-sm-5 p-1 section6-col">
+                <div class="view">
+                    <div class="row align-items-center section6-img" style="background-image: url('{{ home.section6_img3.url }}');">
+                    </div>
+                    <div class="mask flex-center rgba-black-light">
+                         <!-- Content -->
+                        <div class="col-12 text-center text-black-shadow">
+                            <h1 class="cursive-font">{{home.section6_img3_text_line1}}</h1>
+                            <h1 class="subtext-header white-text secondary-font ">{{home.section6_img3_text_line2}}</h1>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 6 -->
+</main>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'mySite/scripts/minJS/home.min.js'%}"></script>
+{% endblock %}

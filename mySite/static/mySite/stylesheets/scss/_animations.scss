@@ -1,0 +1,24 @@
+// Polygon open
+.polygon-enter-active { animation: 1s polygon reverse; }
+.polygon-leave-active { animation: 1s polygon; }
+
+@keyframes polygon {
+  0% { clip-path: polygon(0 0, 50% 0, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%); }
+  100% { clip-path:  polygon(50% 50%, 50% 25%, 50% 50%, 75% 50%, 50% 50%, 50% 75%, 50% 50%, 25% 50%); }
+}
+
+// Box Wipe
+.box-wipe-enter-active { animation: 4s box-wipe-enter; }
+.box-wipe-leave-active { animation: 4s box-wipe-leave; }
+
+@keyframes box-wipe-enter {
+  0% { clip-path: inset(25% 100% 25% -50%); }
+  50% { clip-path: inset(25% 0% 25% 50%); }
+  100% { clip-path: inset(0); }
+}
+
+@keyframes box-wipe-leave {
+  0% { clip-path: inset(0); }
+  50% { clip-path: inset(25% 50% 25% 0%); }
+  100% { clip-path: inset(25% -50% 25% 100%); }
+}
