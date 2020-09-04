@@ -13,7 +13,7 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
     "gulp-uglify-es": "^2.0.0",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "test": "docker-compose up"
